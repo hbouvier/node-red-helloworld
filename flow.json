@@ -1,1 +1,66 @@
-[]
+[
+    {
+        "id": "be68bb9.c97a548",
+        "type": "tab",
+        "label": "Hello World",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1364cbe0.341474",
+        "type": "http in",
+        "z": "be68bb9.c97a548",
+        "name": "Hello World",
+        "url": "/hello",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 210,
+        "y": 140,
+        "wires": [
+            [
+                "c3d0d9d.4e76b28"
+            ]
+        ]
+    },
+    {
+        "id": "38fa7b4e.9b6314",
+        "type": "http response",
+        "z": "be68bb9.c97a548",
+        "name": "Response",
+        "statusCode": "200",
+        "headers": {},
+        "x": 560,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c3d0d9d.4e76b28",
+        "type": "template",
+        "z": "be68bb9.c97a548",
+        "name": "HTML",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head>\n    </head>\n    <body>\n        <h1>\n            Hello {{payload.name}}{{^payload.name}}World{{/payload.name}}!\n        </h1>\n    </body>\n</html>",
+        "output": "str",
+        "x": 400,
+        "y": 140,
+        "wires": [
+            [
+                "38fa7b4e.9b6314"
+            ]
+        ]
+    },
+    {
+        "id": "d723afab.6abb2",
+        "type": "comment",
+        "z": "be68bb9.c97a548",
+        "name": "Documentation",
+        "info": "\nOpening\n    http://localhost:1880/hello\n    \nWill result in an html page with \"Hello World!\"\n\nAnd opening\n    http://localhost:1880/hello?name=Bob\nWill result in an html page with \"Hello Bob!\"\n",
+        "x": 220,
+        "y": 80,
+        "wires": []
+    }
+]
